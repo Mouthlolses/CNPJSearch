@@ -38,4 +38,3 @@ O app foi desenvolvido com foco em **boas práticas** e escalabilidade:
   <img src="Screenshot_20251129_144755.png" width="300" style="display:inline-block; margin-right: 10px;"/>
   <img src="Screenshot_20251129_144810.png" width="300" style="display:inline-block; margin-right: 10px;"/>
 </p>
-*Adicione aqui mais imagens do app funcionando*
