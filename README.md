@@ -1,4 +1,4 @@
-# 🚀 Cariri CNPJ Checker
+# 🚀 CNPJ Search
 
 ![Kotlin](https://img.shields.io/badge/Kotlin-100%25-blue?style=for-the-badge)
 ![Android](https://img.shields.io/badge/Android-100%25-green?style=for-the-badge)
@@ -6,7 +6,7 @@
 
 ## 🔹 Sobre o projeto
 
-**Cariri CNPJ Checker** é um app simples e rápido para consultar informações completas de CNPJs usando a [Brasil API](https://brasilapi.com.br/).  
+**CNPJ Search** é um app simples e rápido para consultar informações completas de CNPJs usando a [Brasil API](https://brasilapi.com.br/).  
 
 Ele retorna:  
 - ✅ Situação cadastral  
