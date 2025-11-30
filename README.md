@@ -1,6 +1,7 @@
 # 🚀 CNPJ Search
 
 ![Kotlin](https://img.shields.io/badge/Kotlin-100%25-blue?style=for-the-badge)
+![Compose](https://img.shields.io/badge/compose-100%25-blue?style=for-the-badge)
 ![Android](https://img.shields.io/badge/Android-100%25-green?style=for-the-badge)
 ![MVVM](https://img.shields.io/badge/Architecture-MVVM-orange?style=for-the-badge)
 
