@@ -3,7 +3,6 @@ package com.cnpj.cnpjsearch.ui.screens
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,9 +13,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.Button
@@ -42,7 +39,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -86,80 +82,80 @@ fun HomeScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Box(contentAlignment = Alignment.Center) {
-        }
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
-            shape = RoundedCornerShape(16.dp),
-            colors = CardDefaults.cardColors(
-                Color.White
-            ),
-            elevation = CardDefaults.cardElevation(
-                16.dp
-            )
-        ) {
-            Column(
+            Card(
                 modifier = Modifier
-                    .fillMaxWidth(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Spacer(modifier = Modifier.height(28.dp))
-                OutlinedTextField(
-                    value = cnpjInput,
-                    onValueChange = { cnpjInput = it },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 18.dp),
-                    label = { Text("CNPJ") },
-                    placeholder = { Text("Ex: 19131243000197") },
-                    isError = cnpjInput.isNotBlank() && !isValid,
-                    singleLine = true,
-                    supportingText = {
-                        if (cnpjInput.isNotBlank() && !isValid)
-                            Text("Formato Incorreto")
-                    }
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
+                shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(
+                    Color.White
+                ),
+                elevation = CardDefaults.cardElevation(
+                    16.dp
                 )
-
-                Spacer(modifier = Modifier.height(38.dp))
-                Button(
-                    onClick = { viewModel.searchData(cnpjInput) },
+            ) {
+                Column(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 28.dp),
-                    enabled = cnpjInput.isNotBlank() && isValid,
-                    colors = ButtonDefaults.buttonColors(
-                        Color(0xFF43A047)
-                    ),
-                    elevation = ButtonDefaults.buttonElevation(
-                        12.dp
-                    ),
-                    contentPadding = ButtonDefaults.ButtonWithIconContentPadding
+                        .fillMaxWidth(),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    if (uiState is UiState.Loading) {
-                        CircularProgressIndicator(
-                            modifier = Modifier
-                                .size(22.dp), // tamanho bom para botão
-                            strokeWidth = 2.dp,
-                            color = Color.White
-                        )
-                    } else {
-                        Icon(
-                            painter = painterResource(R.drawable.search),
-                            contentDescription = "Localized description",
-                            modifier = Modifier.size(ButtonDefaults.IconSize),
-                        )
-                        Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                        Text(text = "Pesquisar")
+                    Spacer(modifier = Modifier.height(28.dp))
+                    OutlinedTextField(
+                        value = cnpjInput,
+                        onValueChange = { cnpjInput = it },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 18.dp),
+                        label = { Text("CNPJ") },
+                        placeholder = { Text("Ex: 19131243000197") },
+                        isError = cnpjInput.isNotBlank() && !isValid,
+                        singleLine = true,
+                        supportingText = {
+                            if (cnpjInput.isNotBlank() && !isValid)
+                                Text("Formato Incorreto")
+                        }
+                    )
+
+                    Spacer(modifier = Modifier.height(38.dp))
+                    Button(
+                        onClick = { viewModel.searchData(cnpjInput) },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 28.dp),
+                        enabled = cnpjInput.isNotBlank() && isValid,
+                        colors = ButtonDefaults.buttonColors(
+                            Color(0xFF43A047)
+                        ),
+                        elevation = ButtonDefaults.buttonElevation(
+                            12.dp
+                        ),
+                        contentPadding = ButtonDefaults.ButtonWithIconContentPadding
+                    ) {
+                        if (uiState is UiState.Loading) {
+                            CircularProgressIndicator(
+                                modifier = Modifier
+                                    .size(22.dp), // tamanho bom para botão
+                                strokeWidth = 2.dp,
+                                color = Color.White
+                            )
+                        } else {
+                            Icon(
+                                painter = painterResource(R.drawable.search),
+                                contentDescription = "Localized description",
+                                modifier = Modifier.size(ButtonDefaults.IconSize),
+                            )
+                            Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+                            Text(text = "Pesquisar")
+                        }
                     }
+                    Spacer(modifier = Modifier.padding(bottom = 18.dp))
                 }
-                Spacer(modifier = Modifier.padding(bottom = 18.dp))
             }
         }
         when (uiState) {
             is UiState.Idle -> cnpjInput
-            is UiState.Loading -> { }
+            is UiState.Loading -> {}
             is UiState.Success -> {
                 Box(
                     contentAlignment = Alignment.Center
@@ -307,6 +303,7 @@ fun HomeScreen(
                     }
                 }
             }
+
             is UiState.Failure -> {
                 Box(
                     contentAlignment = Alignment.Center
